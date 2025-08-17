@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from "react"
+import { motion, AnimatePresence } from "motion/react"
 import {
     Dialog,
     DialogContent,
@@ -37,18 +38,30 @@ export default function Modal({
         // Here we only reinforce optional control
         <Dialog open={isOpen} onOpenChange={onOpenChange}>
             {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
-            <DialogContent
-                onEscapeKeyDown={closeOnEsc ? () => onOpenChange?.(false) : undefined}
-                onInteractOutside={closeOnOverlayClick ? () => onOpenChange?.(false) : undefined}
-            >
-                <DialogHeader>
-                    <DialogTitle>{title}</DialogTitle>
-                    {description && <DialogDescription>{description}</DialogDescription>}
-                </DialogHeader>
-                <div className="flex flex-col gap-4">
-                    {children}
-                </div>
-            </DialogContent>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 100 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 100 }}
+                        transition={{ duration: 0.3 }}
+                    >
+
+                        <DialogContent
+                            onEscapeKeyDown={closeOnEsc ? () => onOpenChange?.(false) : undefined}
+                            onInteractOutside={closeOnOverlayClick ? () => onOpenChange?.(false) : undefined}
+                        >
+                            <DialogHeader>
+                                <DialogTitle>{title}</DialogTitle>
+                                {description && <DialogDescription>{description}</DialogDescription>}
+                            </DialogHeader>
+                            <div className="flex flex-col gap-4">
+                                {children}
+                            </div>
+                        </DialogContent>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </Dialog>
     )
 }

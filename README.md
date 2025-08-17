@@ -7,6 +7,7 @@ An **accessible and reusable modal component** built with [shadcn/ui](https://ui
 - **Framework:** Next.js (App Router)
 - **UI:** shadcn/ui + Radix
 - **Styling:** Tailwind CSS
+- **Animation (optional)**: Framer Motion
 - **Testing:** Jest (unit tests)
 
 ---
@@ -48,6 +49,8 @@ pnpm dev
 ## ✨ Features
 
 - ♿ Fully accessible modal with focus trapping and ESC key handling
+- ⌨️ Close on ESC key
+- 🖱 Close on overlay click
 - 🔄 Reusable component architecture
 - 🧪 Unit tests covering open/close behavior
 - ⚡ Built with modern Next.js App Router
