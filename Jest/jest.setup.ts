@@ -1,0 +1,1 @@
+import '@testing-library/jest-dom'; // Add this line to setup the testing library
