@@ -1,15 +1,23 @@
 /** @type {import('jest').Config} */
 
 module.exports = {
-    rootDir: '../', // Set the root directory to the project root
-    testEnvironment: 'jsdom', // Mock the DOM environment
-    transform: {
-        '^.+\\.(js|jsx|ts|tsx)$': "babel-jest", // Transform files with babel-jest
-    },
-
+    rootDir: "../", // Set the root directory to the project root
+    preset: "ts-jest",
+    testEnvironment: "jest-environment-jsdom",
+    setupFilesAfterEnv: ["<rootDir>/Jest/jest.setup.ts"],
     moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/src/$1', // Map the @ alias to the src directory
+      "^@/(.*)$": "<rootDir>/src/$1",
     },
-    setupFilesAfterEnv: ['<rootDir>/jest.setup.js'], // Setup files to run before the tests
-    testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'], // Ignore node_modules and .next directory
-};
+    transform: {
+      "^.+\\.(ts|tsx)$": ["ts-jest", {
+        tsconfig: {
+          jsx: "react-jsx",
+        },
+      }],
+    },
+    moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+    testMatch: [
+      "<rootDir>/Tests/**/*.(test|spec).(ts|tsx|js)"
+    ],
+  }
+  
