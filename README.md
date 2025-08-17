@@ -123,12 +123,48 @@ pnpm test
 
 ---
 
+## 📋 Project Checklist
+
+### Setup & Base
+- ✅ Initialize Next.js project (App Router)  
+- ✅ Configure Git repository and GitHub remote  
+- ✅ Install Tailwind CSS  
+- ✅ Install shadcn/ui + Radix  
+- ✅ Implement initial reusable Modal component  
+- ✅ Update page.tsx to use the modal  
+- ✅ Update README with initial project structure and usage  
+
+### Features
+- ✅ Open/close modal via button trigger  
+- ✅ Close modal with ESC key  
+- ✅ Close modal by clicking outside (overlay click)  
+- ✅ Focus trapping inside modal (handled by Radix by default)  
+- ✅ Add animations for modal open/close (motion + AnimatePresence)  
+
+### Documentation
+- ✅ README updated with usage examples  
+- ✅ Add installation instructions for shadcn/ui (incluindo `dialog` e `button`)  
+- ✅ Add detailed explanation of accessibility features  
+
+### Testing
+- ✅ Install & configure Jest + ts-jest  
+- ✅ Unit tests for modal open/close behavior  
+- ✅ Accessibility tests (ESC, overlay click, focus trap)  
+
+### Deployment
+- ✅ Deploy to Vercel with live demo link  
+
+---
+
 ## 📂 Project Structure
 
 ```bash
 src/
  ├─ app/              # Next.js App Router structure
  ├─ components/       # Reusable UI components
+ │   ├─ ui/           # shadcn/ui components (button, dialog, etc.)
  │   └─ modal/        # Accessible modal implementation
  ├─ tests/            # Unit tests (Jest)
  └─ utils/            # Helper functions
+
+Jest/                 # Jest configuration (jest.config.js, jest.setup.js)
