@@ -17,6 +17,8 @@ interface ModalProps {
     children: React.ReactNode
     isOpen?: boolean
     onOpenChange?: (open: boolean) => void
+    closeOnEsc?: boolean // Optional to close the modal when pressing the escape key
+    closeOnOverlayClick?: boolean // Optional to close the modal when clicking outside
 }
 
 
@@ -27,11 +29,18 @@ export default function Modal({
     children,
     isOpen,
     onOpenChange,
+    closeOnEsc = true,
+    closeOnOverlayClick = true,
 }: ModalProps) {
     return (
+        // Radix already offers focus trap and ESC features by default
+        // Here we only reinforce optional control
         <Dialog open={isOpen} onOpenChange={onOpenChange}>
             {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
-            <DialogContent>
+            <DialogContent
+                onEscapeKeyDown={closeOnEsc ? () => onOpenChange?.(false) : undefined}
+                onInteractOutside={closeOnOverlayClick ? () => onOpenChange?.(false) : undefined}
+            >
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
                     {description && <DialogDescription>{description}</DialogDescription>}
