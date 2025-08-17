@@ -38,7 +38,18 @@ npx shadcn-ui init
 
 - Confirm the creation of the components/ui folder and the files required for the design system.
 
-4. Run the development server
+4. Add required components
+
+```bash
+npx shadcn-ui add dialog button
+```
+or, each component installed separately.
+```bash
+npx shadcn-ui add dialog
+npx shadcn-ui add button
+```
+
+5. Run the development server
 
 ```bash
 pnpm dev
