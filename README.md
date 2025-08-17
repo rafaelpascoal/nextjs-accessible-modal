@@ -55,6 +55,16 @@ pnpm dev
 - 🧪 Unit tests covering open/close behavior
 - ⚡ Built with modern Next.js App Router
 
+### ♿ Accessibility Features
+
+This modal follows accessibility best practices using Radix UI:
+
+- **Focus trapping**: When the modal opens, keyboard focus stays inside the modal.  
+- **ESC key handling**: Users can close the modal by pressing the Escape key (optional, enabled by default).  
+- **Overlay click**: Users can close the modal by clicking outside the modal content (optional, enabled by default).  
+- **ARIA attributes**: Radix Dialog automatically manages `aria-modal`, `aria-labelledby`, and `aria-describedby` attributes for screen readers.  
+- **Keyboard navigation**: All interactive elements inside the modal are reachable via Tab/Shift+Tab.
+
 ---
 ## 📦 Usage
 
